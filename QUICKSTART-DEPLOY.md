@@ -15,7 +15,7 @@
    Start Command: uvicorn main:app --host 0.0.0.0 --port $PORT
    ```
 5. Add Environment Variables:
-   - `GOOGLE_API_KEY` = `AIzaSyCZoj4JKUp1HN0rdZKSYmwg3IcPxAIKqHg`
+   - `GOOGLE_API_KEY` = `your-google-gemini-api-key-here`
    - `DATABASE_URL` = `sqlite:///./curalink.db`
 6. Click **"Create Web Service"**
 7. ✅ **Copy your backend URL** (e.g., `https://curalink-backend.onrender.com`)
