@@ -1,6 +1,392 @@
-# CuraLink MVP 🏥
+<div align="center">
 
-**CuraLink** connects patients and researchers to discover clinical trials, publications, and health experts through a clean, responsive, and modern web application.
+# 🏥 CuraLink
+
+### AI-Powered Clinical Trial & Research Platform
+
+**Connecting patients with clinical trials and advancing medical research through intelligent matching**
+
+[![Live Demo](https://img.shields.io/badge/Demo-Live-success?style=for-the-badge)](https://cura-link-ai-powered-clinical-trial-iota.vercel.app)
+[![Backend API](https://img.shields.io/badge/API-Live-blue?style=for-the-badge)](https://curalink-ai-powered-clinical-trial.onrender.com/docs)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+
+[Features](#-features) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [API Docs](#-api-documentation) • [Deployment](#-deployment)
+
+</div>
+
+---
+
+## 🌟 Overview
+
+**CuraLink** is a modern, AI-powered platform that bridges the gap between patients seeking clinical trials and researchers conducting medical studies. Using Google Gemini AI, the platform provides intelligent condition detection, expert matching, and personalized trial recommendations.
+
+### 🎯 Key Highlights
+
+- 🤖 **AI-Powered Matching** - Google Gemini integration for smart condition detection and expert recommendations
+- 🔍 **Real-Time Data** - Integration with PubMed, ClinicalTrials.gov, and ORCID APIs
+- 🌐 **Global Reach** - Location-based search with interactive maps
+- 📱 **Responsive Design** - Seamless experience across all devices
+- ⚡ **Fast & Modern** - Built with React 18, FastAPI, and Vite
+
+---
+
+## ✨ Features
+
+### For Patients 👤
+
+| Feature | Description |
+|---------|-------------|
+| **� Smart Onboarding** | AI-powered condition detection from symptom descriptions |
+| **🔬 Trial Discovery** | Find relevant clinical trials based on your condition and location |
+| **�🏥 Expert Matching** | Get AI recommendations for health experts in your area |
+| **📚 Research Access** | Browse latest medical publications and research papers |
+| **💬 Community Forum** | Connect with other patients and share experiences |
+| **⭐ Save Favorites** | Bookmark trials and publications for easy access |
+
+### For Researchers 🔬
+
+| Feature | Description |
+|---------|-------------|
+| **📊 Trial Management** | Create and manage clinical trials with detailed information |
+| **📝 Publish Research** | Share publications and findings with the community |
+| **🤝 Networking** | Connect with other researchers and health experts |
+| **🔗 ORCID Integration** | Link your ORCID profile and ResearchGate |
+| **📅 Meeting Scheduler** | Coordinate meetings with patients and collaborators |
+| **📈 Analytics** | Track views and engagement on your trials |
+
+### AI-Powered Features 🤖
+
+- **Condition Detection** - Extract medical conditions from natural language descriptions
+- **Expert Matching** - AI recommendations based on specialties and location
+- **Eligibility Analysis** - Determine trial suitability for patients
+- **Content Summarization** - Get concise summaries of trials and publications
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+```
+🐍 FastAPI 0.104.1        - Modern Python web framework
+📊 SQLAlchemy 2.0.44      - ORM with Python 3.13 support
+🤖 Google Gemini AI       - AI-powered features
+🔗 REST APIs              - PubMed, ClinicalTrials.gov, ORCID
+🔐 Pydantic               - Data validation
+```
+
+### Frontend
+```
+⚛️  React 18              - UI library with hooks
+⚡ Vite 5                 - Lightning-fast build tool
+🎨 Tailwind CSS          - Utility-first styling
+🔀 React Router v6        - Client-side routing
+📡 Axios                  - HTTP client
+🗺️  Leaflet               - Interactive maps
+```
+
+### Deployment
+```
+🚀 Vercel                 - Frontend hosting
+☁️  Render                 - Backend hosting
+🐙 GitHub                 - Version control
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.11+
+- Node.js 16+
+- Git
+
+### 🔧 Backend Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/saran887/CuraLink---AI-Powered-Clinical-Trial-Research-Platform.git
+   cd CuraLink---AI-Powered-Clinical-Trial-Research-Platform/backend
+   ```
+
+2. **Create virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up environment variables**
+   ```bash
+   # Create .env file
+   GOOGLE_API_KEY=your_gemini_api_key
+   DATABASE_URL=sqlite:///./curalink.db
+   DEBUG=True
+   ```
+
+5. **Run the server**
+   ```bash
+   uvicorn main:app --reload
+   ```
+
+   Backend running at: `http://localhost:8000`
+   
+   API Docs: `http://localhost:8000/docs`
+
+### 💻 Frontend Setup
+
+1. **Navigate to frontend**
+   ```bash
+   cd ../frontend
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   # Create .env file
+   VITE_API_URL=http://localhost:8000/api
+   ```
+
+4. **Run development server**
+   ```bash
+   npm run dev
+   ```
+
+   Frontend running at: `http://localhost:5173`
+
+---
+
+## 📚 API Documentation
+
+### Base URL
+- **Production**: `https://curalink-ai-powered-clinical-trial.onrender.com/api`
+- **Local**: `http://localhost:8000/api`
+
+### Core Endpoints
+
+#### 👤 Users
+```http
+POST   /api/users/signup          # Create account
+POST   /api/users/login           # Login
+GET    /api/users/{id}            # Get user profile
+PUT    /api/users/{id}            # Update profile
+```
+
+#### 🔬 Clinical Trials
+```http
+GET    /api/trials/               # List all trials
+POST   /api/trials/               # Create trial
+GET    /api/trials/{id}           # Get trial details
+PUT    /api/trials/{id}           # Update trial
+DELETE /api/trials/{id}           # Delete trial
+```
+
+#### 🤖 AI Features
+```http
+POST   /api/ai/extract-conditions # Extract conditions from symptoms
+POST   /api/ai/match-experts      # Get expert recommendations
+POST   /api/ai/summarize          # Summarize content
+POST   /api/ai/analyze-eligibility # Check trial eligibility
+```
+
+#### 🌐 External APIs
+```http
+GET    /api/external/trials       # Search ClinicalTrials.gov
+GET    /api/external/publications # Search PubMed
+GET    /api/external/orcid/{id}   # Get ORCID profile
+```
+
+**Full API Documentation**: [Swagger UI](https://curalink-ai-powered-clinical-trial.onrender.com/docs)
+
+---
+
+## 📁 Project Structure
+
+```
+curalink/
+├── backend/
+│   ├── main.py                    # FastAPI application
+│   ├── database.py                # Database configuration
+│   ├── models.py                  # SQLAlchemy models
+│   ├── schemas.py                 # Pydantic schemas
+│   ├── requirements.txt           # Python dependencies
+│   └── routers/
+│       ├── users.py              # User authentication & profiles
+│       ├── trials.py             # Clinical trials CRUD
+│       ├── publications.py       # Publications management
+│       ├── forum.py              # Community forum
+│       ├── ai.py                 # Google Gemini AI integration
+│       ├── connections.py        # User networking
+│       ├── meetings.py           # Meeting scheduler
+│       └── external_apis.py      # External API integrations
+│
+└── frontend/
+    ├── src/
+    │   ├── pages/
+    │   │   ├── Landing.jsx       # Landing page
+    │   │   ├── PatientOnboard.jsx # Patient registration
+    │   │   ├── ResearcherOnboard.jsx # Researcher registration
+    │   │   ├── PatientDashboard.jsx # Patient dashboard
+    │   │   ├── ResearcherDashboard.jsx # Researcher dashboard
+    │   │   ├── HealthExperts.jsx  # Expert directory
+    │   │   ├── Collaborators.jsx  # Networking
+    │   │   └── Forum.jsx          # Community forum
+    │   │
+    │   ├── components/
+    │   │   ├── Navbar.jsx         # Navigation bar
+    │   │   ├── Footer.jsx         # Footer
+    │   │   └── QuickActions.jsx   # Action buttons
+    │   │
+    │   └── services/
+    │       └── api.js             # API client
+    │
+    ├── package.json
+    └── vite.config.js
+```
+
+---
+
+## 🚢 Deployment
+
+### Live Deployment
+
+- **Frontend**: [https://cura-link-ai-powered-clinical-trial-iota.vercel.app](https://cura-link-ai-powered-clinical-trial-iota.vercel.app)
+- **Backend**: [https://curalink-ai-powered-clinical-trial.onrender.com](https://curalink-ai-powered-clinical-trial.onrender.com)
+
+### Deploy Your Own
+
+#### Backend (Render)
+1. Fork this repository
+2. Create a new Web Service on [Render](https://render.com)
+3. Connect your GitHub repository
+4. Set Root Directory: `backend`
+5. Add environment variables (GOOGLE_API_KEY, etc.)
+6. Deploy!
+
+#### Frontend (Vercel)
+1. Import project on [Vercel](https://vercel.com)
+2. Set Root Directory: `frontend`
+3. Add environment variable: `VITE_API_URL`
+4. Deploy!
+
+---
+
+## 🎨 Screenshots
+
+<div align="center">
+
+### 🏠 Landing Page
+*Modern, responsive design with clear call-to-actions*
+
+### 👤 Patient Dashboard
+*Personalized trial recommendations and saved favorites*
+
+### 🔬 Researcher Dashboard
+*Manage trials, publications, and collaborations*
+
+### 🤖 AI Features
+*Intelligent condition detection and expert matching*
+
+</div>
+
+---
+
+## 🔐 Security & Privacy
+
+- ✅ Input validation with Pydantic
+- ✅ CORS protection
+- ✅ Environment variables for sensitive data
+- ✅ SQL injection prevention with SQLAlchemy
+- ⚠️ Note: This is a demo project. For production, implement:
+  - JWT authentication
+  - Password hashing (bcrypt)
+  - Rate limiting
+  - HTTPS only
+  - GDPR compliance
+
+---
+
+## 🗺️ Roadmap
+
+### Phase 1: Core Features ✅
+- [x] User authentication (Patient & Researcher)
+- [x] Clinical trial CRUD operations
+- [x] Publication management
+- [x] Community forum
+- [x] Google Gemini AI integration
+- [x] External API integrations (PubMed, ClinicalTrials.gov, ORCID)
+
+### Phase 2: Enhanced Features 🚧
+- [ ] Email notifications
+- [ ] Real-time chat
+- [ ] Advanced search filters
+- [ ] Data analytics dashboard
+- [ ] Mobile app (React Native)
+
+### Phase 3: Enterprise 📋
+- [ ] Multi-language support
+- [ ] Payment integration
+- [ ] Regulatory compliance tools
+- [ ] Advanced AI features
+- [ ] White-label solutions
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👨‍💻 Author
+
+**Saran**
+- GitHub: [@saran887](https://github.com/saran887)
+- Project Link: [CuraLink Platform](https://github.com/saran887/CuraLink---AI-Powered-Clinical-Trial-Research-Platform)
+
+---
+
+## 🙏 Acknowledgments
+
+- [FastAPI](https://fastapi.tiangolo.com/) - Modern Python web framework
+- [React](https://react.dev/) - UI library
+- [Google Gemini AI](https://ai.google.dev/) - AI integration
+- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
+- [PubMed API](https://www.ncbi.nlm.nih.gov/home/develop/api/) - Medical literature
+- [ClinicalTrials.gov API](https://clinicaltrials.gov/data-api/about-api) - Trial data
+- [ORCID API](https://orcid.org/) - Researcher profiles
+
+---
+
+<div align="center">
+
+### ⭐ Star this repository if you find it helpful!
+
+**Made with ❤️ for advancing medical research and patient care**
+
+[Report Bug](https://github.com/saran887/CuraLink---AI-Powered-Clinical-Trial-Research-Platform/issues) • [Request Feature](https://github.com/saran887/CuraLink---AI-Powered-Clinical-Trial-Research-Platform/issues)
+
+</div>
 
 ---
 
